@@ -1,0 +1,68 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "com.coral.annotation"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
+//        jackOptions {
+//            enabled true
+//        }
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                arguments = ["library" : "true"]
+//            }
+//        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    android {
+        packagingOptions {
+            exclude 'META-INF/services/javax.annotation.processing.Processor'
+        }
+    }
+}
+
+sourceCompatibility = '1.7'
+targetCompatibility = '1.7'
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    //    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    compile project(':app.annotation')
+    annotationProcessor project(':app.compiler')
+
+//    compile 'com.google.dagger:dagger:2.0'
+//    annotationProcessor 'com.google.dagger:dagger-compiler:2.0'
+//    provided 'javax.annotation:jsr250-api:1.0'
+    compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'javax.annotation:jsr250-api:1.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+}
