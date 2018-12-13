@@ -1,5 +1,6 @@
 package com.coral.annotation;
 
+import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,7 +12,7 @@ import android.support.v7.app.AppCompatActivity;
  * Created by xss on 2017/9/30.
  */
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends Activity {
 
     public abstract int getLayoutId();
 

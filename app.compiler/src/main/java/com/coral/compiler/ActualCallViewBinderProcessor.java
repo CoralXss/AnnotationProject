@@ -25,7 +25,7 @@ import javax.tools.Diagnostic;
  * desc: 注解处理器 - 根据注解在编译期间自动生成 java 代码
  * 3. 实现根据注解生成代码
  */
-@SupportedSourceVersion(SourceVersion.RELEASE_7)
+@SupportedSourceVersion(SourceVersion.RELEASE_8)
 public class ActualCallViewBinderProcessor extends AbstractProcessor {
 
     private Filer filer;  // 文件相关辅助类，该接口支持 通过注释处理器创建新文件
